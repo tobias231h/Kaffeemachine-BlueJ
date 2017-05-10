@@ -1,0 +1,12 @@
+#BlueJ class context
+comment0.params=
+comment0.target=int\ getX()
+comment1.params=
+comment1.target=int\ getY()
+comment2.params=
+comment2.target=int\ getWidth()
+comment3.params=
+comment3.target=int\ getHeight()
+comment4.params=
+comment4.target=java.lang.String\ getInstanceName()
+numComments=5

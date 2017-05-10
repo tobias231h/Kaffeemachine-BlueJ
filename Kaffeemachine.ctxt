@@ -1,0 +1,14 @@
+#BlueJ class context
+comment0.params=t
+comment0.target=void\ setAction(java.lang.String)
+comment1.params=
+comment1.target=void\ ausschalten()
+comment2.params=
+comment2.target=void\ anschalten()
+comment3.params=
+comment3.target=void\ sleep()
+comment4.params=
+comment4.target=Kaffeemachine()
+comment5.params=
+comment5.target=void\ trol()
+numComments=6
