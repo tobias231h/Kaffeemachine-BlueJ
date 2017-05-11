@@ -14,5 +14,5 @@
 #### Kaffeetasse wechseln
 Einfach 3x auf die Kaffeetasse klicken
 
-### Wasser auffüllen
+#### Wasser auffüllen
 Einfach 3x auf den Wassertank klicken
