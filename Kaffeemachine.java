@@ -15,6 +15,7 @@ public class Kaffeemachine
     public String action;
     private boolean turningOff = false;
     private int tassenCounter = 0;
+    private int wasserCounter = 0;
     private boolean off = false;
     private int becher = 1;
     private Machine mt;
@@ -58,7 +59,7 @@ public class Kaffeemachine
         
         while (true)
         {
-            if((off && (action != "Tasse" && action != "switchAnAus")) || turningOff && action != "Tasse") 
+            if((off && (action != "Tasse" && action != "switchAnAus")) || turningOff && action != "Tasse" || (mt.wasserStand < 25 && action != "Wasser")) 
             {
                 sleep();
                 continue;
@@ -117,6 +118,14 @@ public class Kaffeemachine
                             becher = 1;
                             mt.switchToBecher(1);
                         }
+                    }
+                    break;
+                case "Wasser":
+                    wasserCounter++;
+                    if (wasserCounter == 3)
+                    {
+                        wasserCounter = 0;
+                        mt.wasserFuellen();
                     }
                     break;
             }

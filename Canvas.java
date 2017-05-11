@@ -267,6 +267,9 @@ public class Canvas
                         case "Boden":
                             kaffeemachine.setAction("TROL");
                             break;
+                        case "Wasser":
+                            kaffeemachine.setAction("Wasser");
+                            break;
                     }
                 }
             }

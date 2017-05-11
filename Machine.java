@@ -17,6 +17,9 @@ public class Machine
     private Text plusText;
     private Rechteck tasse;
     private Rechteck tassenHenkel;
+    private Rechteck wasser;
+    
+    public int wasserStand = 194;
     
     public Machine()
     {
@@ -27,6 +30,11 @@ public class Machine
         Rechteck anAusStrich = new Rechteck("AnAusStrich", 4, 5, 18, 388, Color.red, true);
         Rechteck statusDisplay = new Rechteck("StatusDisplay", 230, 45, 125, 35, Color.lightGray, true);
         Rechteck auswahlDisplay = new Rechteck("AuswahlDisplay", 400, 70, 50, 80, Color.white, true);
+        
+        // Wasserfüllstand
+        Rechteck fuellBody = new Rechteck("FuellBody", 15, 200, 15, 60, Color.black, true);
+        Rechteck weisserTeil = new Rechteck("WeisserTeil", 9, 194, 18, 63, Color.white, true); 
+        wasser = new Rechteck("Wasser", 9, 194, 18, 63, Color.cyan.darker().darker(), true);
         
         int coffeChooseOffset = 20;
         Text cappuccino = new Text("Cappuccino", "Cappuccino", "Arial", 53 + coffeChooseOffset, 132, 15, Color.black, true);
@@ -80,6 +88,36 @@ public class Machine
                 tasse.changeColor(Color.gray);
                 tassenHenkel.changeColor(Color.black);
                 break;
+        }
+    }
+    
+    /**
+     * HASTDUDIEANZAHLANWASSERGESEHENAAAAAA = Anzahl an Wasser (max. 194 weniger)
+     */
+    public void wenigerWasser(int HASTDUDIEANZAHLANWASSERGESEHENAAAAAA)
+    {
+        while(HASTDUDIEANZAHLANWASSERGESEHENAAAAAA > 0)
+        {
+            if(wasser.height == 0) {  
+                HASTDUDIEANZAHLANWASSERGESEHENAAAAAA = 0;
+                break;
+            }
+            wasser.changeSize(wasser.width, --wasser.height);
+            wasser.moveVertical(1);
+            Canvas.getCanvas().wait(40);
+            HASTDUDIEANZAHLANWASSERGESEHENAAAAAA--;
+            wasserStand--;
+        }
+    }
+    
+    public void wasserFuellen()
+    {
+        while(wasserStand < 194)
+        {
+            wasser.changeSize(wasser.width, ++wasser.height);
+            wasser.moveVertical(-1);
+            Canvas.getCanvas().wait(40);
+            wasserStand++;
         }
     }
     
@@ -156,6 +194,10 @@ public class Machine
                 statusText.changeText("Bitte Becher unterstellen");
                 statusText.setX(165);
                 break;
+            case 4:
+                statusText.changeColor(Color.blue);
+                statusText.changeText("Bitte mit Wasser füllen");
+                statusText.setX(159);
         }
     }
     
@@ -166,6 +208,7 @@ public class Machine
     
     public void kaffee()
     {
+        wenigerWasser(25);
         switch (staerkeLevel)
         {
             case 0:
@@ -223,5 +266,10 @@ public class Machine
         }
         
         setStatus(1);
+        
+        if(wasserStand < 25)
+        {
+            setStatus(4);
+        }
     }
 }
