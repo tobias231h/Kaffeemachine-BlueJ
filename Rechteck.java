@@ -98,7 +98,6 @@ public class Rechteck implements IShape
      */
     public void moveVertical(int distance)
     {
-        erase();
         yPosition += distance;
         draw();
     }
@@ -156,7 +155,6 @@ public class Rechteck implements IShape
      */
     public void changeSize(int width, int height)
     {
-        erase();
         this.width = width;
         this.height = height;
         draw();
