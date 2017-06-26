@@ -98,8 +98,14 @@ public class Rechteck implements IShape
      */
     public void moveVertical(int distance)
     {
+        erase();
         yPosition += distance;
         draw();
+    }
+    
+    public void moveVerticalWithoutRedraw(int distance)
+    {
+        yPosition += distance;
     }
 
     /**
@@ -155,9 +161,16 @@ public class Rechteck implements IShape
      */
     public void changeSize(int width, int height)
     {
+        erase();
         this.width = width;
         this.height = height;
         draw();
+    }
+    
+    public void changeSizeWithoutRedraw(int width, int height)
+    {
+        this.width = width;
+        this.height = height;
     }
 
     /**
@@ -173,7 +186,7 @@ public class Rechteck implements IShape
     /*
      * Zeichnet das Rechteck mit den aktuellen Eigenschaften auf dem Canvas
      */
-    private void draw()
+    public void draw()
     {
         if(isVisible) {
             Canvas canvas = Canvas.getCanvas();

@@ -102,8 +102,11 @@ public class Machine
                 HASTDUDIEANZAHLANWASSERGESEHENAAAAAA = 0;
                 break;
             }
-            wasser.changeSize(wasser.width, --wasser.height);
-            wasser.moveVertical(1);
+            wasser.changeSizeWithoutRedraw(wasser.width, --wasser.height);
+            wasser.moveVerticalWithoutRedraw(1);
+            
+            wasser.draw();
+            
             Canvas.getCanvas().wait(40);
             HASTDUDIEANZAHLANWASSERGESEHENAAAAAA--;
             wasserStand--;
@@ -114,8 +117,11 @@ public class Machine
     {
         while(wasserStand < 194)
         {
-            wasser.changeSize(wasser.width, ++wasser.height);
-            wasser.moveVertical(-1);
+            wasser.changeSizeWithoutRedraw(wasser.width, ++wasser.height);
+            wasser.moveVerticalWithoutRedraw(-1);
+            
+            wasser.draw();
+            
             Canvas.getCanvas().wait(40);
             wasserStand++;
         }
@@ -249,8 +255,12 @@ public class Machine
         while ((milchLinks.yPosition + milchLinks.height) < 330)
         {
             // Anfang des Auslassens
-            milchLinks.changeSize(9, (milchLinks.height + 1));
-            milchRechts.changeSize(9, (milchRechts.height + 1));
+            milchLinks.changeSizeWithoutRedraw(9, (milchLinks.height + 1));
+            milchRechts.changeSizeWithoutRedraw(9, (milchRechts.height + 1));
+            
+            milchRechts.draw();
+            milchLinks.draw();
+            
             Canvas.getCanvas().wait(10);
         }
         
@@ -258,10 +268,14 @@ public class Machine
         
         while (milchLinks.height > 0)
         {
-            milchLinks.changeSize(9, (milchLinks.height - 1));
-            milchLinks.moveVertical(1);
-            milchRechts.changeSize(9, (milchRechts.height - 1));
-            milchRechts.moveVertical(1);
+            milchLinks.changeSizeWithoutRedraw(9, (milchLinks.height - 1));
+            milchLinks.moveVerticalWithoutRedraw(1);
+            milchRechts.changeSizeWithoutRedraw(9, (milchRechts.height - 1));
+            milchRechts.moveVerticalWithoutRedraw(1);
+            
+            milchLinks.draw();
+            milchRechts.draw();
+            
             Canvas.getCanvas().wait(10);
         }
         
